@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_77_construtore</title>
+</head>
+<body>
+    <script>
+        class RailwayForm{
+            constructor(name, train_no, address){
+                document.write("Constructor Called...")
+                this.name = name;
+                this.train_no = train_no
+                this.address = address
+            }
+            preview(){
+                alert( this.name + " " + "is your train number : " + this.train_no + " and the address is :" + this.address)
+            }
+            cancle(){
+                this.train_no = 0
+                alert("Form Cancelled " + this.train_no)
+            }
+            submit(){
+                alert("Form Submitted " + this.name + " And the train Number is : " + this.train_no)
+            }
+        }
+        let customerName = prompt(" Enter Your Name ")
+        let customerTrain_no = prompt("Enter your Train Number ")
+        let customerAddress = prompt("Enter your address")
+   
+        let customer =  new RailwayForm(customerName, customerTrain_no, customerAddress)
+        Shriyash.preview()
+        Shriyash.submit()
+        Shriyash.cancle()
+        customer.preview()
+        customer.submit()
+        customer.cancle()
+
+    </script>
+</body>
+</html>

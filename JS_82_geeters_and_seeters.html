@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_82_geeters_and_seeters</title>
+</head>
+<body>
+    <script>
+        class Animal{
+            constructor(name){
+                this._name = name
+            }
+            fly(){
+                console.log(`${this._name} is flying`)
+            }
+            get name(){
+                return this._name
+            }
+            set name(newName){
+                this._name = newName
+            }
+        }
+        let j = new Animal("Donky")
+        j.fly()
+
+        let Madhav =  prompt("Enter Name")
+        j.name = yash
+        console.log(j.name)
+        j.fly()
+    </script>
+</body>
+</html>

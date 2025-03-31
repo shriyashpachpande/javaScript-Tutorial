@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colck</title>
+</head>
+<body>
+    <div id="time" >
+
+    </div>
+    <script>
+        setInterval(()=>{
+            let d = new Date();
+            time.innerHTML = d
+        },1000)
+        let url = "https://api.allorigins.win/get?url=https://devitjobs.com/api/jobsLight"
+        let response = fetch(url)
+        response.then((v)=>{
+            console.log(v.status)
+            console.log(v.ok)
+            return v.json()
+        }).then((v2)=>{
+            console.log(v2)
+            for(let item in v2){
+                console.log(v2[item])
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_46_SETTIMEOUT</title>
+</head>
+<body>
+    <SCRipt>
+        let a = setTimeout(function(){
+            alert("Heloo this is a st time out function")
+        },5000)
+
+        const ab =  (a,b,c)=>{
+            document.write("yes i am running " +( a + b + c))
+           
+        }
+        setTimeout(ab,5000,1,7,3)
+
+        let b =  setInterval(function(){
+            alert("Hello this is a set interval function")
+        },5000)
+
+        clearInterval(b)
+    </SCRipt>
+</body>
+</html>

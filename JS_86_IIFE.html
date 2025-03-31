@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_86_IIFE</title>
+</head>
+<body>
+    <script>
+        let a = () =>{
+         return new  Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve(10);
+            },3000)
+        })}
+// jje async chya left side la ek'(' aahe te IIFE ch fucntion aahe 
+//tyane function la nav dyachi garj nahi raht 
+// last '()' he aahe yach artha aahe ki te call hot aaahe  
+        (async () =>{
+            let b=  await a();
+            console.log(b);
+            document.body.innerHTML = document.body.innerHTML   + b + "<br>"
+            let c =  await a();
+            console.log(c)
+            document.body.innerHTML =  document.body.innerHTML   + c + "<br>"
+            let d =  await a();
+            console.log(d)
+            document.body.innerHTML =  document.body.innerHTML   + d + "<br>"
+        })()
+        
+    </script>
+</body>
+</html>

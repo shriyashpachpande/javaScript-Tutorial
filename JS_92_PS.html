@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_92_PS</title>
+</head>
+<body>
+    <script>
+        //1 problem
+        let a = async (text)=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve(text)
+                }, 2000);
+            })
+        }
+        (
+            async () => {
+                let text = await a('Hello');
+                console.log(text)
+                text =  await a('hiii')
+                console.log(text)
+            }
+        )()
+       
+        // 2nd problem
+            // adding sum using spread syntax
+        function sum(a,b,c){
+            return a + b + c
+        }
+        let x = [1,2,3]
+        console.log(sum(...x))
+
+
+        // 3 problerm n time upload
+        let b = async (text , n=2)=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve(text)
+                },1000*n)
+            })
+        }
+        (async () => {
+            let text1 = await b('hellow 1' , 1)
+            console.log(text1)
+            let text2 = await b('hellow 2' , 4)
+            console.log(text2)
+            }
+        )()
+
+        // 4 problem
+        // simpleInterest
+        function simpleInterest(principal,rate,time){
+            return (principal * rate * time)/100
+        }
+        // or 
+        //console.log(simpleInterest(1000,5,3))
+
+
+        // and using promise
+        let vs = async(principal,rate,time)=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    resolve(simpleInterest(principal,rate,time))
+                },10000)
+            })
+        }
+        (async () => {
+            let text = await vs(1000,5,3)
+            console.log(text)
+        })()
+
+        
+    </script>
+</body>
+</html>

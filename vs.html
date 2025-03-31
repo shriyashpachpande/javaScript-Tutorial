@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+
+        <input type="text" class="inputt" placeholder="Enter your name">
+        <button class="btn" >Submit </button>
+        <div class="a" ></div>
+   
+    </body>
+    <script>
+  
+        var btn =  document.querySelector(".btn")
+        let aaa = document.querySelector(".a")
+
+        btn.addEventListener("click",()=>{
+            var input = document.querySelector(".inputt").value
+            aaa.innerHTML= input
+        })
+    </script>
+</html>

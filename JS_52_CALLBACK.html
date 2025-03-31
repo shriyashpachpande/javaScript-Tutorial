@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_52_CALLBACK</title>
+    <style>
+        span {
+            font-family: Arial, sans-serif;
+            color: rgb(210, 215, 220);
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+<span>
+
+    Chalo, isse detail mein samjhte hain:
+
+1. Callback Function Kya Hai?  
+   Callback function wo function hai jo dusre function ke andar define kiya jata hai aur jab dusra function complete hota hai, tab ye call hota hai. Iska main purpose hai ki aap kisi operation ke complete hone par kuch specific code execute kar sakein.
+<br>
+2. Asynchronous Programming:  
+   JavaScript asynchronous programming ko support karta hai, jisme aapko kisi task ka result milne ka intezaar nahi karna padta. Ismein callbacks ka istemal hota hai taaki jab task complete ho jaye, tab aapko pata chale aur aap agla kaam kar sakein.
+<br>
+3. Example:  
+   Chalo ek simple example dekhte hain:
+<br>
+   ```javascript
+   function greeting(name) {
+       alert('Hello, ' + name);
+   }
+   <br>
+   function processUserInput(callback) {
+       var name = prompt('Please enter your name.');
+       callback(name);
+   }
+   <br>
+   processUserInput(greeting);<br>
+   ```
+   <br>
+   . Function as Argument:  <br>
+   Jab aap kisi function ko dusre function ke argument ke roop mein pass karte ho, tab wo callback function hota hai. Jaise ki pehle wale example mein `greeting` function ko `processUserInput` function ke andar pass kiya gaya.
+   <br>
+2. Function Call After Completion:  <br>
+   Callback function ko dusre function ke andar call kiya jata hai, usually kisi operation ke complete hone par. Agar aap dekhte ho ki ek function dusre function ke andar call ho raha hai aur uska result ya data use kar raha hai, to wo callback hai.
+   <br>
+   1. Function Definition:  <br>
+   `processUserInput` naam ka ek function hai jo ek parameter `callback` leta hai. Ye `callback` parameter ek function ko represent karta hai jo baad mein call kiya jayega.
+   <br>
+2. User Input:  <br>
+   Is function ke andar, `prompt` function ka istemal kiya gaya hai jo user se naam puchta hai. Jab user apna naam enter karta hai, to wo `name` variable mein store hota hai.
+   <br>
+3. Calling the Callback Function:  <br>
+   Uske baad, `callback(name)` likha gaya hai. Yahan, `callback` wo function hai jo aapne `processUserInput` function ko call karte waqt pass kiya hoga. Is line ka matlab hai ki jab user apna naam enter karega, to wo naam `callback` function ko pass kiya jayega.
+   <br>
+Ab isko ek example se samjhte hain:<br>
+
+```javascript<br>
+function greet(name) {<br>
+    console.log('Hello, ' + name + '!');<br>
+}<br>
+<br>
+processUserInput(greet);<br>
+```
+<br>
+Yahan, `greet` function ko `processUserInput` function ke argument ke roop mein pass kiya gaya hai. Jab `processUserInput` function call hota hai:
+<br>
+- Pehle user se naam pucha jayega.<br>
+- Fir, jab user apna naam enter karega, to wo naam `greet` function ko pass kiya jayega.<br>
+- `greet` function phir `console.log` ke through greeting message print karega.<br>
+<br>
+
+<br>
+1. Define the Callback Function:  <br>
+   Sabse pehle, aapko ek function define karna hoga jo aap callback ke roop mein pass karenge. Ye function kisi bhi action ko perform kar sakta hai, jaise ki user input ko process karna ya koi message display karna.
+
+   <br>
+</span>
+    <script>   
+       function greeting(name){
+        alert('Hello ' + name)
+       } 
+       function processUserInput(callback){
+        let name = prompt("Please Enter Your Name:")
+        callback(name);
+       }
+       processUserInput(greeting)
+    </script>
+   
+</body>
+</html>

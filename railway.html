@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway</title>
+    <link rel="stylesheet" href="railway.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" id="search" placeholder="Search for trains..." spellcheck="false" maxlength="5" minlength="5" >
+            <button><img src="images/search.png" alt=""></button>
+        </div><br><br><br>
+        <div class="TrainDetails">
+            <h3 class="trainName">Train Name : Train Name</h3>
+            <h3 class="message">Message : </h3>
+            <h3 class="updated">Updated : </h3>
+        
+            <br><br>
+            
+            
+            <table class="tableTrain" style="width: 100%;" >
+                <tr class="trTable" > 
+                    <th class="thArrival" >Arrival</th>
+                    <th class="thImg" >     </th>
+                    <th class="thStation" >Station</th>
+                    <th class="thDeparture" >Departure</th>
+                </tr>
+
+                <tbody class="tableData" > 
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const apiUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent("https://rappid.in/apis/train.php?train_no=");
+        
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        const trainvalue = searchBox.value;
+        console.log(searchBox.value)
+        
+
+  
+        async function checkTrain(trainNumber) {
+            try {
+                const response = await fetch(apiUrl + trainNumber);
+                if (!response.ok) {
+                    throw new Error("Train not found");
+                }
+                const data = await response.json();
+                
+                if (data.contents) {
+                    const trainData = JSON.parse(data.contents)
+                    console.log(trainData);
+                    document.querySelector('.trainName').textContent = "Train Name : " + trainData.train_name;
+                    const status=  document.querySelector('.message').innerHTML = "Message : " + trainData.message;
+                    document.querySelector('.updated').innerHTML = "Updated : " + trainData.updated_time
+
+                    const stationStatus = status.slice(18,status.length-8).trim();
+                   
+                    var hours
+                    var minutes 
+                    var seconds
+                    var formatted
+                    let ihtml = "";
+                    document.querySelector(".TrainDetails").style.display = "block"
+//*************************** Functions of timing and Railway Locator ***********************************//                    
+                    function formatTiming(timing){
+                        const hours = timing.substring(0,2);
+                        const minutes = timing.substring(2,4)
+                        const seconds = timing.substring(4)
+                        return `${hours}:${minutes}`
+                    }
+                    function locatorFunction(parameter){
+                        if(parameter == stationStatus){
+                            return '<img src="imagesRailway/railwayLocator.webp" alt="" class="locator">';
+                        }
+                        return ''
+                    }
+
+                    for(let item in trainData.data){
+                        
+                        formatted = formatTiming(trainData.data[item].timing.replace(":",""))
+                        isvalid_img = locatorFunction(trainData.data[item].station_name.trim())
+                        
+                        ihtml += `
+                            <tr class="tableData" >
+                                <td>
+                                    <p class="arrivingTime">${formatted}</p>
+                                    <p class="delay">${trainData.data[item].delay}</p>
+                                </td>
+                                <td>
+                                    ${isvalid_img}
+                                    
+                                </td>
+                                <td>
+                                    <p class="stationName">${trainData.data[item].station_name}</p>
+                                    <p class="platform"><span>Platform : </span>${trainData.data[item].platform}</p>
+                                    <p class="distance">${trainData.data[item].distance}</p>
+                                </td>
+                                <td>
+                                    <p><span class="halt"><span>Halt </span>: ${trainData.data[item].halt}</span></p>
+                                    <p class="delay">${trainData.data[item].delay}</p>
+                                </td>
+                            </tr>
+                  
+                        `;
+                    }
+                   
+                    document.querySelector('.tableData').innerHTML = ihtml;
+                } else {
+                    alert("Train not found");
+                }
+            } catch (error) {
+                alert("Wrong train number");
+                console.error("Error fetching data:", error);
+            }
+        }
+        searchBtn.addEventListener("click", () => { 
+            const trainvalue = searchBox.value; 
+            if (trainvalue.length !== 5) { 
+                alert("Please enter valid  Train Number."); 
+            } else if (isNaN(trainvalue)) { 
+                alert("Please enter a valid number."); 
+            } else { 
+                checkTrain(trainvalue); 
+            } 
+        }); 
+        
+    </script>
+</body>
+</html>

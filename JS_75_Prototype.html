@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_75_Prototype</title>
+</head>
+<body>
+    <script>
+        let a = {
+            name2: "Shriyash",
+            language: "JS",
+            age : 20,
+            run : ()=>{
+                alert("Runn Self")
+            }
+        }
+        console.log(a)
+        let p ={
+            run : ()=>{
+                alert("Runnnn")
+            } 
+        }
+        p.__proto__={
+            name:"Yash"
+        }
+        a.__proto__ = p
+        a.run()
+        console.log(a.name)
+       // wrong console.log(p.name2)
+    </script>
+</body>
+</html>

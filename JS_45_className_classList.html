@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_45_className_classList</title>
+    <style>
+        .red {
+            background-color: beige;
+            color: blue
+        }
+        .yellow{
+            background-color: yellow;
+            color:brown;
+        }
+        .text-dark{
+            color: black;
+        }
+        .yash{
+            font-size: 30px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="first" class="yellow" >
+        <span>
+            Hey I am here to use JS
+        </span>
+    </div>
+
+    <script>
+        let first =  document.getElementById("first");
+        first.className = "text-dark red"
+        first.classList.add("yash")
+        first.classList.remove("yellow")
+        first.classList.replace("red", "yellow")
+        first.classList.contains("red")
+        first.classList.contains("yellow")
+        first.classList.toggle("yash")
+        first.classList.toggle("yash")
+    </script>
+</body>
+</html>

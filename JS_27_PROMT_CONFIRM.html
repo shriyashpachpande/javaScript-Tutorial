@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_27_PROMT_CONFIRM</title>
+</head>
+<body>
+    <script>
+        let a = prompt("Enter a number :");
+        a = Number.parseInt(a);
+
+        let w = confirm("Do you want to allow this page to write the content");
+        if (w == true) {
+            document.write(a);
+        }
+        else{
+            document.write("You have denied the permission");
+        }
+    </script>
+</body>
+</html>
